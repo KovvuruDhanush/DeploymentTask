@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment # Kubernetes resource kind we are creating
+metadata:
+  name: collegeadmission-react-app-dep
+spec:
+  selector:
+    matchLabels:
+      app: collegeadmission-react-app
+  replicas: 2 # Number of replicas that will be created for this deployment
+  template:
+    metadata:
+      labels:
+        app: collegeadmission-react-app
+    spec:
+      containers:
+        - name: collegeadmission-react-app
+          image: nihithanarreddy/collegeadmission-react-app:v2
+
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5173 # The port that the container is running on in the cluster
